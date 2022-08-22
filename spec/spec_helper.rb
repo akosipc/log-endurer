@@ -1,3 +1,3 @@
 require 'byebug'
 
-Dir[File.join("./lib/*.rb")].each { |f| require f }
+Dir[File.join("./lib/**/*.rb")].each { |f| require f }
