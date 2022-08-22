@@ -3,6 +3,8 @@ class View
     class InvalidArgumentError < StandardError; end
     class NotImplementedError < StandardError; end
 
+    attr_reader :value
+
     def initialize(string, options = {})
       @string = string
 

@@ -11,7 +11,7 @@ RSpec.describe View::IPAddr, type: :klass do
         it 'returns the instance of the View::IPAddr and set the IP Address' do
           klass = do_initialize
 
-          expect(klass.ip_address).to eq '255.255.255.255'
+          expect(klass.value).to eq '255.255.255.255'
         end
       end
 

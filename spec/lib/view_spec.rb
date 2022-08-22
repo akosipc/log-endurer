@@ -10,8 +10,8 @@ RSpec.describe View, type: :model do
       it 'returns with the instance of the View and set the uri and ip_address' do
         klass = do_initialize
 
-        expect(klass.uri.uri).to eq '/help_page/1'
-        expect(klass.ip_address.ip_address).to eq '126.318.035.038'
+        expect(klass.uri.value).to eq '/help_page/1'
+        expect(klass.ip_address.value).to eq '126.318.035.038'
       end
     end
 

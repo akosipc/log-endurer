@@ -11,7 +11,7 @@ RSpec.describe View::URI, type: :klass do
         it 'returns the instance of the View::URI and set the URI' do
           klass = do_initialize
 
-          expect(klass.uri).to eq '/home/1'
+          expect(klass.value).to eq '/home/1'
         end
       end
 

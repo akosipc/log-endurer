@@ -1,17 +1,15 @@
 require_relative './base'
 
 class View
-  class IPAddr < View::Base
-    DEFAULT_REGEX = /[0-9]{3}.[0-9]{3}.[0-9]{3}.[0-9]{3}/.freeze
-
-    attr_reader :ip_address
+  class URI < View::Base
+    DEFAULT_REGEX = /\/\w+/.freeze
 
     private
 
     def validate!
-      raise View::IPAddr::InvalidArgumentError, "String does not match the format. Value passed was #{@string}"  unless @string =~ DEFAULT_REGEX
+      raise View::URI::InvalidArgumentError, "String does not match the format. Value passed was #{@string}"  unless @string =~ DEFAULT_REGEX
 
-      @ip_address = @string
+      @value = @string
     end
   end
 end
