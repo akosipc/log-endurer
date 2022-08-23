@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-# lib/commander.rb => Entrypoint for the bin/parser.rb script
-
 require 'csv'
 
 class Commander

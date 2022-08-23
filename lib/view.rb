@@ -12,6 +12,10 @@ class View
     parse_line
   end
 
+  def decorate
+    [uri.value, ip_address.value]
+  end
+
   private
 
   def parse_line
