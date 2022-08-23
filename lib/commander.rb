@@ -11,7 +11,7 @@ class Commander
   end
 
   def unique_views
-    x  = accumulate.then do |views|
+    accumulate.then do |views|
       grouped_views = views.group_by { |acc| acc.uri.value }
 
       grouped_views.map do |key, value|
@@ -20,8 +20,6 @@ class Commander
 
       grouped_views
     end
-
-    byebug
   end
   
   private

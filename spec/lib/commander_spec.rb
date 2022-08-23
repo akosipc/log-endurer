@@ -1,7 +1,5 @@
 require 'spec_helper'
 
-
-
 RSpec.describe Commander, type: :service do
   let(:file_path) { '../spec/support/webserver.log' }
 
@@ -26,10 +24,15 @@ RSpec.describe Commander, type: :service do
   end
 
   describe '#unique_views' do
-    subject(:do_unique_views) { described_class.new(file_path: file_path).unique_views }
+    let(:klass) { described_class.new(file_path: file_path) }
+    subject(:do_unique_views) { klass.unique_views }
 
     it 'compiles all of the unique views by ip_address' do
-      do_unique_views
+      expect(klass).to receive(:accumulate).and_call_original
+      output = do_unique_views
+
+      expect(output).to be_instance_of Hash
+      expect(output['/about'].count).to eq 21
     end
   end
 
@@ -44,6 +47,9 @@ RSpec.describe Commander, type: :service do
       expect(views.first).to be_instance_of View
       expect(views.first.uri.value).to eq '/help_page/1'
       expect(views.first.ip_address.value).to eq '126.318.035.038'
+
+      expect(views.last.uri.value).to eq '/about'
+      expect(views.last.ip_address.value).to eq '543.910.244.929'
     end
   end
 end
