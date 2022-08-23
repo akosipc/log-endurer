@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 RSpec.describe View, type: :model do
@@ -19,9 +21,9 @@ RSpec.describe View, type: :model do
       let(:line) { 'just_a_string 126.318.035.038' }
 
       it 'raises an error message about the URI' do
-        expect {
+        expect do
           expect(do_initialize).to be_falsey
-        }.to raise_error(View::Base::InvalidArgumentError)
+        end.to raise_error(View::Base::InvalidArgumentError)
       end
     end
 
@@ -29,9 +31,9 @@ RSpec.describe View, type: :model do
       let(:line) { '/help_page/1 12321321398573' }
 
       it 'raises an error message about the IP address format' do
-        expect {
+        expect do
           expect(do_initialize).to be_falsey
-        }.to raise_error(View::Base::InvalidArgumentError)
+        end.to raise_error(View::Base::InvalidArgumentError)
       end
     end
   end

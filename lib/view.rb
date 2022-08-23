@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class View
   class InvalidArgumentError < StandardError; end
 
@@ -13,7 +15,7 @@ class View
   private
 
   def parse_line
-    uri_string, ip_addr_string = @line.split(' ')
+    uri_string, ip_addr_string = @line.split
 
     @uri = View::URI.new(uri_string)
     @ip_address = View::IPAddr.new(ip_addr_string)

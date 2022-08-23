@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 RSpec.describe Commander, type: :service do
   let(:file_path) { '../spec/support/webserver.log' }
 
   describe '#new' do
-    subject(:do_initialize) { described_class.new(file_path: file_path) }
+    subject(:do_initialize) { described_class.new(file_path:) }
 
     context 'when the filepath is existing' do
       it 'returns an instance of the class and doesn\'t return the error' do
@@ -16,15 +18,15 @@ RSpec.describe Commander, type: :service do
       let!(:file_path) { './neck_message.log' }
 
       it 'returns a Commander::InvalidFilePathError' do
-        expect {
+        expect do
           do_initialize
-        }.to raise_error(Commander::InvalidFilePathError)
+        end.to raise_error(Commander::InvalidFilePathError)
       end
     end
   end
 
   describe '#unique_views' do
-    let(:klass) { described_class.new(file_path: file_path) }
+    let(:klass) { described_class.new(file_path:) }
     subject(:do_unique_views) { klass.unique_views }
 
     it 'compiles all of the unique views by ip_address' do
@@ -37,7 +39,7 @@ RSpec.describe Commander, type: :service do
   end
 
   describe '#accumulate' do
-    subject(:do_accumulate) { described_class.new(file_path: file_path).send(:accumulate) }
+    subject(:do_accumulate) { described_class.new(file_path:).send(:accumulate) }
 
     it 'accumulates the views for the file into objects' do
       views = do_accumulate

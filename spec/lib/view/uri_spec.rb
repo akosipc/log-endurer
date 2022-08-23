@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 RSpec.describe View::URI, type: :klass do
   describe '#new' do
     subject(:do_initialize) { described_class.new(string) }
-  
+
     context 'when class settings was set to non-strict' do
       context 'when the string passed fits the format' do
         let(:string) { '/home/1' }
@@ -19,9 +21,9 @@ RSpec.describe View::URI, type: :klass do
         let(:string) { 'this_is_a_string' }
 
         it 'raises an error about the URI passed' do
-          expect {
+          expect do
             expect(do_initialize).to be_falsey
-          }.to raise_error(described_class::InvalidArgumentError)
+          end.to raise_error(described_class::InvalidArgumentError)
         end
       end
     end

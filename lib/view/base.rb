@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class View
   class Base
     class InvalidArgumentError < StandardError; end
@@ -5,7 +7,7 @@ class View
 
     attr_reader :value
 
-    def initialize(string, options = {})
+    def initialize(string, _options = {})
       @string = string
 
       validate!
