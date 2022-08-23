@@ -24,6 +24,10 @@ class Commander
     end
   end
 
+  def sort_by_views(collection)
+    collection.sort_by { |_k, v| v.count }.reverse.to_h
+  end
+
   private
 
   def accumulate

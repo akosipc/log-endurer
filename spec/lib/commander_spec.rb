@@ -37,6 +37,19 @@ RSpec.describe Commander, type: :service do
     end
   end
 
+  describe '#sort_by_views' do
+    subject(:do_sort) { klass.sort_by_views(klass.unique_views) }
+
+    let(:klass) { described_class.new(file_path:) }
+
+    it_behaves_like 'an accumulator sorting the hash', '/about', 21
+    it_behaves_like 'an accumulator sorting the hash', '/help_page/1', 23
+
+    it 'returns as a sorted collection' do
+      expect(do_sort).to be_instance_of Hash
+    end
+  end
+
   describe '#accumulate' do
     subject(:do_accumulate) { described_class.new(file_path:).send(:accumulate) }
 

@@ -11,3 +11,16 @@ RSpec.shared_examples 'an accumulator giving a view' do |index, uri, ip_address|
     expect(views[index].decorate).to eq [uri, ip_address]
   end
 end
+
+RSpec.shared_examples 'an accumulator sorting the hash' do |key, value_count|
+  subject(:do_sort) { klass.sort_by_views(klass.unique_views) }
+
+  let(:file_path) { '../spec/support/webserver.log' }
+  let(:klass) { described_class.new(file_path:) }
+
+  it 'returns the values' do
+    result = do_sort
+
+    expect(result[key].count).to eq value_count
+  end
+end
