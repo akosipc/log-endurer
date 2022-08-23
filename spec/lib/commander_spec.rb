@@ -31,11 +31,9 @@ RSpec.describe Commander, type: :service do
     let(:klass) { described_class.new(file_path:) }
 
     it 'compiles all of the unique views by ip_address' do
-      allow(klass).to receive(:accumulate)
+      expect(klass).to receive(:accumulate).and_call_original
 
       do_unique_views
-
-      expect(klass).to have_receive(:accumulate)
     end
   end
 
